@@ -23,6 +23,9 @@ import Cocoa
 @objc(ChartXAxisRenderer)
 open class XAxisRenderer: AxisRendererBase
 {
+    var anchorPointBottom = CGPoint(x: 0.5, y: 0.0)
+    var anchorPointTop = CGPoint(x: 0.5, y: 1.0)
+    
     @objc public init(viewPortHandler: ViewPortHandler, xAxis: XAxis?, transformer: Transformer?)
     {
         super.init(viewPortHandler: viewPortHandler, transformer: transformer, axis: xAxis)
@@ -98,24 +101,24 @@ open class XAxisRenderer: AxisRendererBase
         
         if xAxis.labelPosition == .top
         {
-            drawLabels(context: context, pos: viewPortHandler.contentTop - yOffset, anchor: CGPoint(x: 0.5, y: 1.0))
+            drawLabels(context: context, pos: viewPortHandler.contentTop - yOffset, anchor: anchorPointTop)
         }
         else if xAxis.labelPosition == .topInside
         {
-            drawLabels(context: context, pos: viewPortHandler.contentTop + yOffset + xAxis.labelRotatedHeight, anchor: CGPoint(x: 0.5, y: 1.0))
+            drawLabels(context: context, pos: viewPortHandler.contentTop + yOffset + xAxis.labelRotatedHeight, anchor: anchorPointTop)
         }
         else if xAxis.labelPosition == .bottom
         {
-            drawLabels(context: context, pos: viewPortHandler.contentBottom + yOffset, anchor: CGPoint(x: 0.5, y: 0.0))
+            drawLabels(context: context, pos: viewPortHandler.contentBottom + yOffset, anchor: anchorPointBottom)
         }
         else if xAxis.labelPosition == .bottomInside
         {
-            drawLabels(context: context, pos: viewPortHandler.contentBottom - yOffset - xAxis.labelRotatedHeight, anchor: CGPoint(x: 0.5, y: 0.0))
+            drawLabels(context: context, pos: viewPortHandler.contentBottom - yOffset - xAxis.labelRotatedHeight, anchor: anchorPointBottom)
         }
         else
         { // BOTH SIDED
-            drawLabels(context: context, pos: viewPortHandler.contentTop - yOffset, anchor: CGPoint(x: 0.5, y: 1.0))
-            drawLabels(context: context, pos: viewPortHandler.contentBottom + yOffset, anchor: CGPoint(x: 0.5, y: 0.0))
+            drawLabels(context: context, pos: viewPortHandler.contentTop - yOffset, anchor: anchorPointTop)
+            drawLabels(context: context, pos: viewPortHandler.contentBottom + yOffset, anchor: anchorPointBottom)
         }
     }
     
