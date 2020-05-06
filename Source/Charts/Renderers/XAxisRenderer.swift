@@ -23,7 +23,7 @@ import Cocoa
 @objc(ChartXAxisRenderer)
 open class XAxisRenderer: AxisRendererBase
 {
-    open var anchorPointBottom = CGPoint(x: 0.5, y: 0.0)
+    open var anchorPointBottom = CGPoint(x: 0.8, y: 0.0)
     open var anchorPointTop = CGPoint(x: 0.5, y: 1.0)
     
     @objc public init(viewPortHandler: ViewPortHandler, xAxis: XAxis?, transformer: Transformer?)
